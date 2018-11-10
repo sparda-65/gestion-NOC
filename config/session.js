@@ -11,6 +11,13 @@
 
 module.exports.session = {
 
+  adapter: 'connect-mongo',
+  url: 'mongodb://localhost:27017/gestion-NOC',
+  collection: 'sessions',
+  auto_reconnect: false,
+  ssl: false,
+  stringify: true,
+
   /***************************************************************************
   *                                                                          *
   * Session secret is automatically generated when your new app is created   *
