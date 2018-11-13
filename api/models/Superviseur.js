@@ -32,15 +32,15 @@ module.exports = {
       type:'string',
     },
 
-    access:[{
-      m200: {type:'boolean'},
-      vpn:{type:'boolean'}
-    }],
-
-    ressources:[{
-      pcPortable:{type:'boolean'},
-      telephone:{type:'boolean'}
-    }],
+    // access:{
+    //   m200: {type:'boolean'},
+    //   vpn:{type:'boolean'}
+    // },
+    //
+    // ressources: {
+    //   pcPortable: {type: 'boolean'},
+    //   telephone: {type: 'boolean'}
+    // },
     dateFin:{
       type:'string',
       columnType:'date'
