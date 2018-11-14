@@ -64,13 +64,13 @@ module.exports.bootstrap = async function(done) {
   ]);
 
   var superviseur=await Superviseur.createEach([
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe A', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe B', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe C', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe D', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe B', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe A', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', Equipe:'Equipe D', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe C', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false },
   ]).fetch();
 
   var ressources =await Ressources.createEach([
