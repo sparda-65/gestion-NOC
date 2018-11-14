@@ -1,5 +1,5 @@
 /**
- * Superviseur.js
+ * Ressources.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,38 +12,9 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    nom:{
-      type:'string',
-      required:true
-    },
 
-    prenom:{
-      type:'string',
-      required:true
-    },
-
-    dateEntry:{
-      type:'string',
-      columnType:'date',
-      required:true
-    },
-
-    equipe:{
-      type:'string',
-    },
-
-    dateFin:{
-      type:'string',
-      columnType:'date'
-    },
-
-    actif:{
-      type:'boolean'
-    },
-
-    chart:{
-      type:'boolean'
-    },
+    pcPortable: {type: 'boolean'},
+    telephone: {type: 'boolean'},
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -54,16 +25,10 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    ressources: {
-      collection:'ressources',
-      via: 'owner'
-    },
-
-    acces: {
-      collection:'acces',
-      via: 'owner'
+    owner:{
+      model:'superviseur',
+      unique: true
     }
-
   },
 
 };
