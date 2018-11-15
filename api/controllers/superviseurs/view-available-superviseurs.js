@@ -17,7 +17,7 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    var superviseurs= await Superviseur.find().populate('acces','ressource');
+    var superviseurs= await Superviseur.find();
 
     // Respond with view.
     return exits.success({

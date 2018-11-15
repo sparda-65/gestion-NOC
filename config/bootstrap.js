@@ -64,36 +64,36 @@ module.exports.bootstrap = async function(done) {
   ]);
 
   var superviseur=await Superviseur.createEach([
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe C', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe C', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
   ]).fetch();
 
-  var ressources =await Ressources.createEach([
-    {owner:superviseur[0].id,pcPortable:true, telephone:false},
-    {owner:superviseur[1].id,pcPortable:true, telephone:false},
-    {owner:superviseur[2].id,pcPortable:true, telephone:false},
-    {owner:superviseur[3].id,pcPortable:true, telephone:false},
-    {owner:superviseur[4].id,pcPortable:true, telephone:false},
-    {owner:superviseur[5].id,pcPortable:true, telephone:false},
-    {owner:superviseur[6].id,pcPortable:true, telephone:false},
-
-    ]);
-
-  var acces =await Acces.createEach([
-    {owner:superviseur[0].id,m2000:true, vpn:false},
-    {owner:superviseur[1].id,m2000:true, vpn:false},
-    {owner:superviseur[2].id,m2000:true, vpn:false},
-    {owner:superviseur[3].id,m2000:true, vpn:false},
-    {owner:superviseur[4].id,m2000:true, vpn:false},
-    {owner:superviseur[5].id,m2000:true, vpn:false},
-    {owner:superviseur[6].id,m2000:true, vpn:false},
-
-  ]);
+  // var ressources =await Ressources.createEach([
+  //   {owner:superviseur[0].id,pcPortable:true, telephone:false},
+  //   {owner:superviseur[1].id,pcPortable:true, telephone:false},
+  //   {owner:superviseur[2].id,pcPortable:true, telephone:false},
+  //   {owner:superviseur[3].id,pcPortable:true, telephone:false},
+  //   {owner:superviseur[4].id,pcPortable:true, telephone:false},
+  //   {owner:superviseur[5].id,pcPortable:true, telephone:false},
+  //   {owner:superviseur[6].id,pcPortable:true, telephone:false},
+  //
+  //   ]);
+  //
+  // var acces =await Acces.createEach([
+  //   {owner:superviseur[0].id,m2000:true, vpn:false},
+  //   {owner:superviseur[1].id,m2000:true, vpn:false},
+  //   {owner:superviseur[2].id,m2000:true, vpn:false},
+  //   {owner:superviseur[3].id,m2000:true, vpn:false},
+  //   {owner:superviseur[4].id,m2000:true, vpn:false},
+  //   {owner:superviseur[5].id,m2000:true, vpn:false},
+  //   {owner:superviseur[6].id,m2000:true, vpn:false},
+  //
+  // ]);
 
   // Save new bootstrap version
   await sails.helpers.fs.writeJson.with({

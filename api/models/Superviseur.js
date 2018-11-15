@@ -44,6 +44,11 @@ module.exports = {
     chart:{
       type:'boolean'
     },
+    ressources: { type: 'json', columnType: 'array' },
+
+
+    acces: { type: 'json', columnType: 'array' },
+
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -53,16 +58,6 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-
-    ressources: {
-      collection:'ressources',
-      via: 'owner'
-    },
-
-    acces: {
-      collection:'acces',
-      via: 'owner'
-    }
 
   },
 
