@@ -64,13 +64,13 @@ module.exports.bootstrap = async function(done) {
   ]);
 
   var superviseur=await Superviseur.createEach([
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe C', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe B', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe A', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
-    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2015', equipe:'Equipe D', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'Beggari', prenom:'amine', dateEntry:'10-01-2012', equipe:'Equipe A', actif:true, chart:false, ressources:['Pc Portable'],acces:['VPN','M2000','Outlook'] },
+    { nom:'idboubker', prenom:'lahcen', dateEntry:'3-05-2017', equipe:'Equipe B', actif:true, chart:false, ressources:['Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'chahboune', prenom:'abdella', dateEntry:'10-01-2014', equipe:'Equipe C', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','Outlook'] },
+    { nom:'rajaa', prenom:'saad', dateEntry:'10-01-2012', equipe:'Equipe D', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'dousba7', prenom:'abdelali', dateEntry:'10-01-2013', equipe:'Equipe B', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
+    { nom:'bensallam', prenom:'hicham', dateEntry:'10-01-2012', equipe:'Equipe A', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['M2000','Outlook'] },
+    { nom:'cbida', prenom:'ayoub', dateEntry:'10-01-2018', equipe:'Equipe D', actif:true, chart:false, ressources:['Pc Portable','Telephone'],acces:['VPN','M2000','Outlook'] },
   ]).fetch();
 
   // var ressources =await Ressources.createEach([

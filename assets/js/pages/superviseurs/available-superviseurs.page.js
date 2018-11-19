@@ -34,6 +34,16 @@ parasails.registerPage('available-superviseurs', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    //…
+
+    clickDeleteSperviseur: async function (superviseurId) {
+
+      console.log('supprimer superviseur avec id:'+superviseurId);
+
+      await Cloud.destroyOneSuperviseur.with({id:superviseurId});
+
+      _.remove(this.superviseurs, {id:superviseurId});
+      this.$forceUpdate();
+
+    }
   }
 });

@@ -38,7 +38,7 @@
       <td><span v-for="item in superviseur.acces">{{item}}, </span></td>
       <td><span v-for="item in superviseur.ressources">{{item}}, </span></td>
       <td>
-        <span class="options-button" data-toggle="tooltip" data-placement="top">
+        <span class="options-button" data-toggle="tooltip" data-placement="top" @click="clickDeleteSperviseur(superviseur.id)" title="Delete">
           <span class="fa fa-trash-o text-danger"></span>
         </span>
         <span class="options-button" data-toggle="tooltip" data-placement="top">
