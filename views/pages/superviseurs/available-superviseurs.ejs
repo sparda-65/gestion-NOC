@@ -12,7 +12,8 @@
     </div>
   </div>
 
-  <table id="example" class="table table-striped table-bordered" style="width:100%">
+  <div class="container">
+  <table id="example" class="table table-striped table-bordered">
     <thead>
     <tr>
       <th>Nom</th>
@@ -23,6 +24,7 @@
       <th>Date Debut</th>
       <th>ressources</th>
       <th>Acces</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -33,8 +35,19 @@
       <td>{{superviseur.actif}}</td>
       <td>{{superviseur.chart}}</td>
       <td>{{superviseur.dateEntry}}</td>
-      <td v-for="">{{superviseur.acces}}</td>
-      <td>{{superviseur.ressources}}</td>
+      <td><span v-for="item in superviseur.acces">{{item}}, </span></td>
+      <td><span v-for="item in superviseur.ressources">{{item}}, </span></td>
+      <td>
+        <span class="options-button" data-toggle="tooltip" data-placement="top">
+          <span class="fa fa-trash-o text-danger"></span>
+        </span>
+        <span class="options-button" data-toggle="tooltip" data-placement="top">
+          <span class="fa fa-edit text-primary"></span>
+        </span>
+        <span class="options-button" data-toggle="tooltip" data-placement="top">
+          <span class="fa fa-eye-slash text-dark"></span>
+        </span>
+      </td>
     </tr>
     </tbody>
     <tfoot>
@@ -47,9 +60,11 @@
       <th>Date Debut</th>
       <th>ressources</th>
       <th>Acces</th>
+      <th>Actions</th>
     </tr>
     </tfoot>
   </table>
+ </div>
 
 </div>
 

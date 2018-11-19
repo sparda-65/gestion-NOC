@@ -71,6 +71,8 @@ var jsFilesToInject = [
   'dependencies/jquery.min.js',
   'dependencies/bowser.js',
   'dependencies/vue.js',
+  '/dependencies/DataTables-1.10.18/js/jquery.dataTables.js',
+  '/dependencies/DataTables-1.10.18/js/jquery.dataTables.min.js',
   'dependencies/**/*.js',
 
   // First amongst the app-level files, bring in cloud configuration

@@ -4,6 +4,16 @@ parasails.registerPage('available-superviseurs', {
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
     //…
+    superviseurs:[],
+    confirmDeleteSupModalOpen: false,
+    selectedSup: undefined,
+
+    //syncing / loading status
+    syncing:false,
+    //validation errors
+    formErrors:{},
+    //status erreur serveur
+    cloudError:''
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -15,6 +25,9 @@ parasails.registerPage('available-superviseurs', {
   },
   mounted: async function() {
     //…
+      $('#example').DataTable({
+        "pageLength": 10
+      });
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
