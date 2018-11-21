@@ -25,9 +25,7 @@ parasails.registerPage('available-superviseurs', {
   },
   mounted: async function() {
     //…
-      $('#example').DataTable({
-        "pageLength": 10
-      });
+      $('#example').DataTable();
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
@@ -35,15 +33,30 @@ parasails.registerPage('available-superviseurs', {
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
 
-    clickDeleteSperviseur: async function (superviseurId) {
+    clickDeleteSup: function(superviseurId){
+      console.log('clicked Delete thing button');
+      this.confirmDeleteSupModalOpen=true;
+      this.selectedSup=_.find(this.superviseurs,{id:superviseurId})
+      console.log(this.selectedSup);
+    },
 
-      console.log('supprimer superviseur avec id:'+superviseurId);
+    closeDeleteSupModal: function () {
+      this.selectedSup=undefined;
+      this.confirmDeleteSupModalOpen=false;
+    },
 
-      await Cloud.destroyOneSuperviseur.with({id:superviseurId});
+    handleParsingDeleteSupForm: function () {
+      return{
+        id:this.selectedSup.id
+      };
+    },
 
-      _.remove(this.superviseurs, {id:superviseurId});
+    submittedDeleteSupForm:function () {
+      console.log('OK its work');
+      _.remove(this.superviseurs, { id: this.selectedSup.id});
       this.$forceUpdate();
-
-    }
+      this.confirmDeleteSupModalOpen=false;
+      this.selectedSup=undefined;
+    },
   }
 });
