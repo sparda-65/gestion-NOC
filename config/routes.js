@@ -53,6 +53,8 @@ module.exports.routes = {
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
 
   'DELETE /api/v1/superviseurs/destroy-one-superviseur': { action: 'superviseurs/destroy-one-superviseur' },
+  'POST /api/v1/superviseurs/upload-superviseur':        { action: 'superviseurs/upload-superviseur' },
+  'GET /api/v1/superviseurs/:id/photo':                  { action: 'superviseurs/download-photo' },
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

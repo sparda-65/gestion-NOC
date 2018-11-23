@@ -12,6 +12,19 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+
+    imageUploadFd: {
+      type: 'string',
+      description: 'The Skipper file descriptor string uniquely identifying the uploaded image.',
+      required: true
+    },
+
+    imageUploadMime: {
+      type: 'string',
+      description: 'The MIME type for the uploaded image.',
+      required: true
+    },
+
     nom:{
       type:'string',
       required:true
