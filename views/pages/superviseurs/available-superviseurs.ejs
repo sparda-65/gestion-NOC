@@ -42,7 +42,7 @@
           <span class="fa fa-trash-o text-danger"></span>
         </span>
         <span class="options-button" data-toggle="tooltip" data-placement="top">
-          <span class="fa fa-pencil text-primary"></span>
+          <span class="fa fa-pencil-square-o text-primary"></span>
         </span>
         <span class="options-button" data-toggle="tooltip" data-placement="top">
           <span class="fa fa-eye-slash text-dark"></span>
@@ -117,7 +117,7 @@
     <ajax-form action="uploadSuperviseur" :syncing.sync="syncing" :cloud-error.sync="cloudError" :handle-parsing="handleParsingUploadSupForm" @submitted="submittedUploadSupForm($event)">
       <div class="modal-body">
         <div class="form-group">
-          <label>Add a photo:</label>
+          <label>Ajouter une photo:</label>
           <div class="photo-uploader" :class="!uploadFormData.previewImageSrc ? 'empty' :  ''">
             <div class="photo-upload-field row d-flex align-items-center" :class="!uploadFormData.previewImageSrc ? 'justify-content-center' :  'justify-content-start'" >
               <div class="photo-preview col">
@@ -132,8 +132,8 @@
                   <span class="button-text" v-else>Change image</span>
                   <input type="file" :disabled="syncing" accept="image/*" class="file-input" @change="changeFileInput($event.target.files)"/>
                 </span>
-                <p class="image-advice text-muted" v-if="!formErrors.photo"><strong>Tip</strong>: Make sure the item is front and center in the photo, so people know exactly what you're offering to share.</p>
-                <p class="image-advice text-danger" v-if="formErrors.photo">A photo is required in order to add a new item.</p>
+                <p class="image-advice text-muted" v-if="!formErrors.photo"><strong>Tip</strong>: Assurez-vous que le visage est centre sur la photo.</p>
+                <p class="image-advice text-danger" v-if="formErrors.photo">une photo est requise pour ajouter un superviseur.</p>
               </div>
             </div>
           </div>
