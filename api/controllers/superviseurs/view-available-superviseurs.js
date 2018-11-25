@@ -17,12 +17,23 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    var superviseurs= await Superviseur.find();
+
+    var url = require('url');
+
+    var superviseurs = await Superviseur.find();
+
+    _.each(superviseurs, (superviseur)=> {
+      superviseur.imageSrc = url.resolve(sails.config.custom.baseUrl, '/api/v1/superviseurs/'+superviseur.id+'/photo');
+      delete superviseur.imageUploadFd;
+      delete superviseur.imageUploadMime;
+    });
 
     // Respond with view.
     return exits.success({
-      superviseurs
+      currentSection: 'superviseurs',
+      superviseurs: superviseurs,
     });
+
 
   }
 
