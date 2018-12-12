@@ -25,15 +25,9 @@ module.exports = {
       required: true
     },
 
-    nom:{
-      type:'string',
-      required:true
-    },
+    nom:{type:'string', required:true},
 
-    prenom:{
-      type:'string',
-      required:true
-    },
+    prenom:{type:'string', required:true},
 
     dateEntry:{
       type:'string',
@@ -41,22 +35,14 @@ module.exports = {
       required:true
     },
 
-    equipe:{
-      type:'string',
-    },
+    equipe:{type:'string'},
 
-    dateFin:{
-      type:'string',
-      columnType:'date'
-    },
+    dateFin:{type:'string', columnType:'date'},
 
-    actif:{
-      type:'boolean'
-    },
+    actif:{type:'boolean'},
 
-    chart:{
-      type:'boolean'
-    },
+    chart:{type:'boolean'},
+
     ressources: { type: 'json', columnType: 'array' },
 
 
@@ -71,6 +57,15 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+
+    // ressources: {
+    //   collection: 'ressources',
+    //   via: 'owner',
+    // },
+    // acces: {
+    //   collection: 'acces',
+    //   via: 'owner',
+    // }
 
   },
 

@@ -22,8 +22,8 @@ parasails.registerPage('available-superviseurs', {
       dateFin:'',
       actif: undefined,
       chart: undefined,
-      ressources:'',
-      acces:'',
+      ressources:[],
+      acces:[],
       previewImageSrc: ''
     },
 
@@ -99,8 +99,8 @@ parasails.registerPage('available-superviseurs', {
         dateFin:'',
         actif: undefined,
         chart: undefined,
-        ressources:'',
-        acces:'',
+        ressources:[],
+        acces:[],
         previewImageSrc: ''
       };
       // Clear error states
@@ -133,12 +133,15 @@ parasails.registerPage('available-superviseurs', {
       if (Object.keys(this.formErrors).length > 0) {
         return;
       }
-
+      argins.ressources=JSON.stringify(argins.ressources);
       return _.omit(argins, ['previewImageSrc']);
     },
 
-    submittedUploadSupForm: function(result) {
-      var newItem = _.extend(result, {
+    submittedUploadSupForm: function(result){
+
+      console.log('submittedUploadSupForm'+this.uploadFormData.ressources);
+
+      var newItem = _.extend(result,{
         id:result.id,
         nom:this.uploadFormData.nom,
         prenom:this.uploadFormData.prenom,
@@ -147,8 +150,8 @@ parasails.registerPage('available-superviseurs', {
         dateFin:this.uploadFormData.dateFin,
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
-        ressources:[this.uploadFormData.ressources],
-        acces:[this.uploadFormData.acces],
+        ressources: this.uploadFormData.ressources,
+        acces:this.uploadFormData.acces,
       });
 
 

@@ -35,8 +35,8 @@
       <td>{{superviseur.actif}}</td>
       <td>{{superviseur.chart}}</td>
       <td>{{superviseur.dateEntry}}</td>
-      <td><span v-for="item in superviseur.acces">{{item}}, </span></td>
-      <td><span v-for="item in superviseur.ressources">{{item}}, </span></td>
+      <td><span v-for="item in superviseur.acces">{{item}} </span></td>
+      <td><span v-for="item in superviseur.ressources">{{item}} </span></td>
       <td class="align-items-center" style="text-align: center;letter-spacing:5px">
         <span class="options-button" data-toggle="tooltip" data-placement="top" @click="clickDeleteSup(superviseur.id)" title="Delete">
           <span class="fa fa-trash-o text-danger"></span>
@@ -85,7 +85,7 @@
 
             <div class="modal-body">
               <slot name="body">
-                voulez-vous vraiment supprimer le Superviseur!!?
+                voulez-vous vraiment supprimer le Superviseur <strong>{{selectedSup.nom || 'item'}} {{selectedSup.prenom || 'item'}}</strong>?
               </slot>
             </div>
 
@@ -154,7 +154,12 @@
           <label>signature charte</label>
           <input class="form-control" type="checkbox" v-model="uploadFormData.chart" placeholder="Waffle Iron">
           <label>Ressources</label>
-          <input class="form-control" type="text" v-model="uploadFormData.ressources" placeholder="Waffle Iron">
+
+          <select class="form-control" multiple="multiple" bind:v-model="uploadFormData.ressources">
+            <option  v-for="item in ressources" :value="item.id" :key="item.id">{{item.ressource}}</option>
+          </select>
+
+          <!--<input class="form-control" type="text" v-model="uploadFormData.ressources" placeholder="Waffle Iron">-->
           <label>Acces</label>
           <input class="form-control" type="text" v-model="uploadFormData.acces" placeholder="Waffle Iron">
         </div>

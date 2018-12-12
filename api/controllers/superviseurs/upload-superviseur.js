@@ -22,8 +22,8 @@ module.exports = {
     dateFin:{type: 'string'},
     actif: {type:'boolean'},
     chart:{type:'boolean'},
-    ressources:{type: 'json'},
-    acces:{type: 'json'},
+    ressources:{type: 'json', columnType:'array'},
+    acces:{type: 'json', columnType:'array'},
 
   },
 
@@ -49,6 +49,7 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
+    console.log('Upload superviseur');
     var url = require('url');
     var util = require('util');
 
@@ -76,8 +77,8 @@ module.exports = {
       dateFin: inputs.dateFin,
       actif: inputs.actif,
       chart: inputs.chart,
-      ressources: [inputs.ressources],
-      acces: [inputs.acces],
+      ressources: JSON.parse(inputs.ressources),
+      acces: inputs.acces,
     }).fetch();
 
     var imageSrc = url.resolve(sails.config.custom.baseUrl, '/api/v1/superviseurs/'+newSuperviseur.id+'/photo');
