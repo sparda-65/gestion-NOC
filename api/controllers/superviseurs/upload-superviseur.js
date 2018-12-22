@@ -66,6 +66,9 @@ module.exports = {
       throw 'noFileAttached';
     }
     console.log(info);
+
+    inputs.ressources=JSON.parse(inputs.ressources);
+
     // Create a new "Superviseur" record.
     var newSuperviseur = await Superviseur.create({
       imageUploadFd: info.fd,
@@ -77,7 +80,7 @@ module.exports = {
       dateFin: inputs.dateFin,
       actif: inputs.actif,
       chart: inputs.chart,
-      ressources: JSON.parse(inputs.ressources),
+      ressources: inputs.ressources,
       acces: inputs.acces,
     }).fetch();
 

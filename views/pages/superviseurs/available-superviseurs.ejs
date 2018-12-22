@@ -155,9 +155,10 @@
           <input class="form-control" type="checkbox" v-model="uploadFormData.chart" placeholder="Waffle Iron">
           <label>Ressources</label>
 
-          <select class="form-control" multiple="multiple" bind:v-model="uploadFormData.ressources">
+          <select class="form-control" multiple="multiple" v-model="selectedRess">
             <option  v-for="item in ressources" :value="item.id" :key="item.id">{{item.ressource}}</option>
           </select>
+          <span>{{selectedRess}}</span>
 
           <!--<input class="form-control" type="text" v-model="uploadFormData.ressources" placeholder="Waffle Iron">-->
           <label>Acces</label>

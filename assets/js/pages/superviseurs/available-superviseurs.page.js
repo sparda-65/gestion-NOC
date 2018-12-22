@@ -8,6 +8,7 @@ parasails.registerPage('available-superviseurs', {
 
     confirmDeleteSupModalOpen: false,
     selectedSup: undefined,
+    selectedRess:[],
 
     // The "virtual" portion of the URL which is managed by this page script.
     virtualPageSlug: '',
@@ -120,7 +121,8 @@ parasails.registerPage('available-superviseurs', {
     handleParsingUploadSupForm: function() {
       // Clear out any pre-existing error messages.
       this.formErrors = {};
-
+      this.uploadFormData.ressources= JSON.stringify(this.selectedRess);
+      console.log(this.selectedRess);
       var argins = this.uploadFormData;
 
       if(!argins.photo) {
@@ -133,7 +135,6 @@ parasails.registerPage('available-superviseurs', {
       if (Object.keys(this.formErrors).length > 0) {
         return;
       }
-      argins.ressources=JSON.stringify(argins.ressources);
       return _.omit(argins, ['previewImageSrc']);
     },
 
@@ -150,7 +151,7 @@ parasails.registerPage('available-superviseurs', {
         dateFin:this.uploadFormData.dateFin,
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
-        ressources: this.uploadFormData.ressources,
+        ressources: JSON.parse(this.uploadFormData.ressources),
         acces:this.uploadFormData.acces,
       });
 
