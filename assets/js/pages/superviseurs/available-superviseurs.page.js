@@ -9,6 +9,7 @@ parasails.registerPage('available-superviseurs', {
     confirmDeleteSupModalOpen: false,
     selectedSup: undefined,
     selectedRess:[],
+    selectedAcc:[],
 
     // The "virtual" portion of the URL which is managed by this page script.
     virtualPageSlug: '',
