@@ -43,7 +43,10 @@
     "async": true,
 
     // Models:
-    "User": true
+    "User": true,
+    "Superviseur": true,
+    "Acces": true,
+    "Ressources": true
     
     // …and any others.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

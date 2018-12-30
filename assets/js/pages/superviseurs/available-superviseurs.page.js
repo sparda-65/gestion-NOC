@@ -50,8 +50,7 @@ parasails.registerPage('available-superviseurs', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    //…
-      $('#example').DataTable();
+    $('#example').DataTable();
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
@@ -63,7 +62,7 @@ parasails.registerPage('available-superviseurs', {
     clickDeleteSup: function(superviseurId){
       console.log('clicked Delete thing button');
       this.confirmDeleteSupModalOpen=true;
-      this.selectedSup=_.find(this.superviseurs,{id:superviseurId})
+      this.selectedSup=_.find(this.superviseurs,{id:superviseurId});
       console.log(this.selectedSup);
     },
 
