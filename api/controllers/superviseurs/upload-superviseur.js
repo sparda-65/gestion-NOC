@@ -68,6 +68,7 @@ module.exports = {
     console.log(info);
 
     inputs.ressources=JSON.parse(inputs.ressources);
+    inputs.acces=JSON.parse(inputs.acces);
 
     // Create a new "Superviseur" record.
     var newSuperviseur = await Superviseur.create({

@@ -122,7 +122,9 @@ parasails.registerPage('available-superviseurs', {
       // Clear out any pre-existing error messages.
       this.formErrors = {};
       this.uploadFormData.ressources= JSON.stringify(this.selectedRess);
+      this.uploadFormData.acces= JSON.stringify(this.selectedAcc);
       console.log(this.selectedRess);
+      console.log(this.selectedAcc);
       var argins = this.uploadFormData;
 
       if(!argins.photo) {
@@ -152,7 +154,7 @@ parasails.registerPage('available-superviseurs', {
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
         ressources: JSON.parse(this.uploadFormData.ressources),
-        acces:this.uploadFormData.acces,
+        acces:JSON.parse(this.uploadFormData.acces),
       });
 
 

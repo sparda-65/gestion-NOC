@@ -162,7 +162,13 @@
 
           <!--<input class="form-control" type="text" v-model="uploadFormData.ressources" placeholder="Waffle Iron">-->
           <label>Acces</label>
-          <input class="form-control" type="text" v-model="uploadFormData.acces" placeholder="Waffle Iron">
+
+          <select class="form-control" multiple="multiple" v-model="selectedAcc">
+            <option  v-for="item in acces" :value="item.id" :key="item.id">{{item.acce}}</option>
+          </select>
+          <span>{{selectedAcc}}</span>
+
+          <!-- <input class="form-control" type="text" v-model="uploadFormData.acces" placeholder="Waffle Iron"> -->
         </div>
         <p class="text-danger" v-if="cloudError === 'tooBig'"><small>That file is too big. Please choose a junkier picture.</small></p>
         <p class="text-danger" v-else-if="cloudError"><small>An error occured while processing your request. Please check your information and try again, or <a href="/support">contact support</a> if the error persists.</small></p>
