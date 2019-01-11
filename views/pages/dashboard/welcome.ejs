@@ -4,10 +4,50 @@
     <hr/>
     <p>This is a page that only logged-in people can visit. Don't you feel special? Try clicking on a button below to do some things you can't do when you're logged out.</p>
     <div class="buttons">
-      <a class="btn btn-info" href="/account/profile">Update my email</a>
       <button class="btn btn-outline-info ml-2" @click="clickOpenDashboardModalButton()">Open a modal</button>
+      <button class="btn btn-info" @click="clickShiftButton()">Afficher shift</button>
     </div>
   </div>
+  <div class="container">
+      <h3>Date shift</h3>
+      <input class="form-control" type="date" v-model="date">
+    <table @action="clickShiftButton()" id="shift" class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th></tdh>
+        <th><p>8h          15h</p></th>
+        <th>15h23h</th>
+        <th>23h8h</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr id="equipe A">
+        <th>Equipe A</th>
+        <td v-bind:class="{disponible: disponible.equipe1[0]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe1[1]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe1[2]}"></td>
+      </tr>
+      <tr id="equipe B">
+        <th>Equipe B</th>
+        <td v-bind:class="{disponible: disponible.equipe2[0]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe2[1]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe2[2]}"></td>
+      </tr>
+      <tr id="equipe C">
+        <th>Equipe C</th>
+        <td v-bind:class="{disponible: disponible.equipe3[0]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe3[1]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe3[2]}"></td>
+      </tr>
+      <tr id="equipe D">
+        <th>Equipe D</th>
+        <td v-bind:class="{disponible: disponible.equipe4[0]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe4[1]}"></td>
+        <td v-bind:class="{disponible: disponible.equipe4[2]}"></td>
+      </tr>
+      </tbody>
+    </table>
+   </div>
 
   <modal class="example-modal" v-if="dashboardModalVisible" @close="closeDashboardModal()" v-cloak>
     <div class="modal-header">

@@ -24,9 +24,10 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    // owner: {
-    //   model: 'superviseur'
-    // }
+    owners: {
+      collection: 'Superviseur',
+      via: 'ressources'
+    }
   },
 
 };

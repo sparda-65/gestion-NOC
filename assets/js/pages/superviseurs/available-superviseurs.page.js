@@ -153,8 +153,12 @@ parasails.registerPage('available-superviseurs', {
         dateFin:this.uploadFormData.dateFin,
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
-        ressources: JSON.parse(this.uploadFormData.ressources),
-        acces:JSON.parse(this.uploadFormData.acces),
+        ressources: {
+          ressource:Object.keys(this.uploadFormData.ressources)
+        },
+        acces:{
+          acce:Object.keys(this.uploadFormData.acces)
+        }
       });
 
 

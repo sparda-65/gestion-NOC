@@ -20,7 +20,7 @@ module.exports = {
 
     var url = require('url');
 
-    var superviseurs = await Superviseur.find();
+    var superviseurs = await Superviseur.find().populate('ressources').populate('acces');
     var ressources = await Ressources.find();
     var acces = await Acces.find();
 

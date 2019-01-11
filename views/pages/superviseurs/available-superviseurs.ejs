@@ -35,8 +35,8 @@
       <td>{{superviseur.actif}}</td>
       <td>{{superviseur.chart}}</td>
       <td>{{superviseur.dateEntry}}</td>
-      <td><span v-for="item in superviseur.acces">{{item}} </span></td>
-      <td><span v-for="item in superviseur.ressources">{{item}} </span></td>
+      <td><span v-for="item in superviseur.ressources">{{item.ressource}}, </span></td>
+      <td><span v-for="item in superviseur.acces">{{item.acce}}, </span></td>
       <td class="align-items-center" style="text-align: center;letter-spacing:5px">
         <span class="options-button" data-toggle="tooltip" data-placement="top" @click="clickDeleteSup(superviseur.id)" title="Delete">
           <span class="fa fa-trash-o text-danger"></span>
@@ -156,7 +156,7 @@
           <label>Ressources</label>
 
           <select class="form-control" multiple="multiple" v-model="selectedRess">
-            <option  v-for="item in ressources" :value="item.id" :key="item.id">{{item.ressource}}</option>
+            <option  v-for="item in ressources" :value="item.id" :key="item.ressource">{{item.ressource}}</option>
           </select>
           <span>{{selectedRess}}</span>
 
@@ -164,7 +164,7 @@
           <label>Acces</label>
 
           <select class="form-control" multiple="multiple" v-model="selectedAcc">
-            <option  v-for="item in acces" :value="item.id" :key="item.id">{{item.acce}}</option>
+            <option  v-for="item in acces" :value="item.id" :key="item.acce">{{item.acce}}</option>
           </select>
           <span>{{selectedAcc}}</span>
 
