@@ -154,10 +154,10 @@ parasails.registerPage('available-superviseurs', {
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
         ressources: {
-          ressource:Object.keys(this.uploadFormData.ressources)
+          ressource:this.uploadFormData.ressources.keys
         },
         acces:{
-          acce:Object.keys(this.uploadFormData.acces)
+          acce:this.uploadFormData.acces.keys
         }
       });
 

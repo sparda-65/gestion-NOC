@@ -21,6 +21,10 @@ parasails.registerPage('welcome', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
+
+    $( document ).ready(() => {
+      this.clickShiftButton();
+    });
     //…
   },
 
@@ -39,7 +43,8 @@ parasails.registerPage('welcome', {
 
     clickShiftButton: function(){
       if(this.date ===''){
-        this.date=Date.now();
+        this.date=new Date(Date.now());
+        console.log(new Date());
       }
 
       function diffdate(d1,d2){
