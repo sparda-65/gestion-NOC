@@ -5,8 +5,10 @@ parasails.registerPage('available-superviseurs', {
   data: {
     //…
     superviseurs:[],
+    addRessource:'',
 
     confirmDeleteSupModalOpen: false,
+    addRessourceOpen: false,
     selectedSup: undefined,
     selectedRess:[],
     selectedAcc:[],
@@ -154,10 +156,10 @@ parasails.registerPage('available-superviseurs', {
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
         ressources: {
-          ressource:this.uploadFormData.ressources.keys
+          ressource:this.uploadFormData.ressources
         },
         acces:{
-          acce:this.uploadFormData.acces.keys
+          acce:this.uploadFormData.acces
         }
       });
 
@@ -198,6 +200,42 @@ parasails.registerPage('available-superviseurs', {
 
     },
 
+    // Methodes ajouter ressource
+
+    clickAddRess: function() {
+      // Open the modal.
+      console.log('clicked Add Button');
+      this.addRessourceOpen=true;
+    },
+
+    submittedAddRessourceForm: function(result){
+
+      console.log('submittedAddRessourceForm');
+      var newRess = _.extend(result,{
+        id:result.id,
+        ressource:this.addRessource,
+      });
+      
+      this.ressources.unshift(newRess);
+
+      this.addRessourceOpen=false;
+      // Close the modal.
+      this.closeAddRessourceModal();
+    },
+
+    closeAddRessourceModal: function () {
+      console.log('clicked close button');
+      this.addRessourceOpen=false;
+    },
+
+    handleParsingAddRessForm: function() {
+      // Clear out any pre-existing error messages.
+      console.log(this.addRessource);
+      this.formErrors = {};
+      return{
+        ressource:this.addRessource
+      };
+    }
 
   }
 });

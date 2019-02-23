@@ -8,6 +8,8 @@
       <h5>vue globale sur les equipes NOC supervision qui veille sur notre réseau jour et nuit. </h5>
       <div class="header-button">
         <button class="btn btn-outline-primary" @click="clickAddButton()">Ajouter Superviseur</button>
+        <button class="btn btn-outline-primary" @click="clickAddRess()">Ajouter Ressources</button>
+        <button class="btn btn-outline-primary" @click="clickAddButton()">Ajouter Acces</button>
       </div>
     </div>
   </div>
@@ -105,7 +107,39 @@
     </ajax-form>
   </modal>
 
-  <% /* "Ajouter superviseur" modal */ %>
+  <!--model pour ajouter ressource-->
+  <modal v-if="addRessourceOpen" v-cloak key="add" @close="closeAddRessourceModal()">
+
+      <div class="modal-header">
+          <h5 class="modal-title">Ajouter ressource</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span>&times;</span>
+          </button>
+      </div>
+
+    <ajax-form action="addOneRessource" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingAddRessForm" @submitted="submittedAddRessourceForm($event)">
+      <div class="modal-mask">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>ressource</label>
+            <input class="form-control" type="text" v-model="addRessource" placeholder="Waffle Iron">
+          </div>  
+        </div> 
+            <div class="modal-footer">
+              <slot name="footer">
+                <button type="submit" class="btn btn-outline-primary">
+                  Ajouter
+                </button>
+                <button class="btn btn-outline-primary" data-dismiss="modal">
+                  Cancel
+                </button>
+              </slot>
+            </div>
+          </div>
+    </ajax-form>
+  </modal>
+
+  <!--"Ajouter superviseur" modal-->
 
   <modal v-if="virtualPageSlug === 'new'" v-cloak key="new" @close="closeUploadSupModal()">
     <div class="modal-header">
