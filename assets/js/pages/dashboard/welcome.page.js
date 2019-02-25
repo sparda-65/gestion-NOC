@@ -64,7 +64,7 @@ parasails.registerPage('welcome', {
       var reste= diff % 8;
       console.log(reste);
 
-      if(reste===0 || reste===1){
+      if(reste===0){
         this.disponible.equipe1=[true,false,false];
         this.disponible.equipe2=[false,true,false];
         this.disponible.equipe3=[false,false,false];
@@ -72,25 +72,57 @@ parasails.registerPage('welcome', {
         console.log('A=M B=A C=X D=N');
         console.log(this.disponible);
       }
-      if(reste===2 || reste===3){
+      if(reste===1){
+        this.disponible.equipe1=[true,false,true];
+        this.disponible.equipe2=[false,true,false];
+        this.disponible.equipe3=[false,false,false];
+        this.disponible.equipe4=[false,false,false];
+        console.log('A=M B=A C=X D=N');
+        console.log(this.disponible);
+      }
+
+      if(reste===2){
         this.disponible.equipe1=[false,false,true];
         this.disponible.equipe2=[true,false,false];
         this.disponible.equipe3=[false,true,false];
         this.disponible.equipe4=[false,false,false];
         console.log('A=N B=M C=A D=X');
       }
-      if(reste===4 || reste===5){
+      if(reste===3){
+        this.disponible.equipe1=[false,false,false];
+        this.disponible.equipe2=[true,false,true];
+        this.disponible.equipe3=[false,true,false];
+        this.disponible.equipe4=[false,false,false];
+        console.log('A=N B=M C=A D=X');
+      }
+
+      if(reste===4){
         this.disponible.equipe1=[false,false,false];
         this.disponible.equipe2=[false,false,true];
         this.disponible.equipe3=[true,false,false];
         this.disponible.equipe4=[false,true,false];
         console.log('A=X B=N C=M D=A');
       }
-      if(reste===6 || reste===7){
+      if(reste===5){
+        this.disponible.equipe1=[false,false,false];
+        this.disponible.equipe2=[false,false,false];
+        this.disponible.equipe3=[true,false,true];
+        this.disponible.equipe4=[false,true,false];
+        console.log('A=X B=N C=M D=A');
+      }
+
+      if(reste===6){
         this.disponible.equipe1=[false,true,false];
         this.disponible.equipe2=[false,false,false];
         this.disponible.equipe3=[false,false,true];
         this.disponible.equipe4=[true,false,false];
+        console.log('A=A B=X C=N D=M');
+      }
+      if(reste===7){
+        this.disponible.equipe1=[false,true,false];
+        this.disponible.equipe2=[false,false,false];
+        this.disponible.equipe3=[false,false,false];
+        this.disponible.equipe4=[true,false,true];
         console.log('A=A B=X C=N D=M');
       }
 
