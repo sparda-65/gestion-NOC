@@ -215,7 +215,7 @@ parasails.registerPage('available-superviseurs', {
         id:result.id,
         ressource:this.addRessource,
       });
-      
+
       this.ressources.unshift(newRess);
 
       this.addRessourceOpen=false;

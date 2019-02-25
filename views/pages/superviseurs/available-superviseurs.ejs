@@ -118,13 +118,32 @@
       </div>
 
     <ajax-form action="addOneRessource" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingAddRessForm" @submitted="submittedAddRessourceForm($event)">
-      <div class="modal-mask">
         <div class="modal-body">
           <div class="form-group">
             <label>ressource</label>
             <input class="form-control" type="text" v-model="addRessource" placeholder="Waffle Iron">
           </div>  
         </div> 
+
+        <table id="Ress" class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Ressource</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in ressources">
+              <td>{{item.ressource}}</td>
+              <td class="align-items-center" style="text-align: center;letter-spacing:5px">
+                <span class="options-button" data-toggle="tooltip" data-placement="top" @click="clickDeleteSup(superviseur.id)" title="Delete">
+                  <span class="fa fa-trash-o text-danger"></span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
             <div class="modal-footer">
               <slot name="footer">
                 <button type="submit" class="btn btn-outline-primary">
@@ -135,7 +154,6 @@
                 </button>
               </slot>
             </div>
-          </div>
     </ajax-form>
   </modal>
 
