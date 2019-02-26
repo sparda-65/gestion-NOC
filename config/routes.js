@@ -56,6 +56,7 @@ module.exports.routes = {
   'POST /api/v1/superviseurs/upload-superviseur':        { action: 'superviseurs/upload-superviseur' },
   'GET /api/v1/superviseurs/:id/photo':                  { action: 'superviseurs/download-photo' },
   'POST /api/v1/superviseurs/add-one-ressource':         { action: 'superviseurs/add-one-ressource' },
+  'DELETE /api/v1/superviseurs/destroy-one-ressource':   { action: 'superviseurs/destroy-one-ressource' },
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

@@ -5,11 +5,14 @@ parasails.registerPage('available-superviseurs', {
   data: {
     //…
     superviseurs:[],
+    ressources:[],
     addRessource:'',
 
     confirmDeleteSupModalOpen: false,
+    confirmDeleteRessModalOpen: false,
     addRessourceOpen: false,
     selectedSup: undefined,
+    selectedRessource:undefined,
     selectedRess:[],
     selectedAcc:[],
 
@@ -226,6 +229,7 @@ parasails.registerPage('available-superviseurs', {
     closeAddRessourceModal: function () {
       console.log('clicked close button');
       this.addRessourceOpen=false;
+      this.addRessource='';
     },
 
     handleParsingAddRessForm: function() {
@@ -235,7 +239,40 @@ parasails.registerPage('available-superviseurs', {
       return{
         ressource:this.addRessource
       };
-    }
+    },
 
+    // comfirmation de supressiom d'une ressource
+
+    clickDeleteRess: function(ressId){
+      console.log('clicked Delete ressource button');
+      this.confirmDeleteRessModalOpen=true;
+      this.selectedRessource=_.find(this.ressources,{id:ressId});
+      console.log(this.selectedRessource);
+    },
+
+    closeDeleteRessModal: function () {
+      // Close modal
+      this.goto('/superviseurs');
+      this.selectedRessource=undefined;
+      this.confirmDeleteRessModalOpen=false;
+    },
+
+    handleParsingDeleteRessForm: function () {
+      return{
+        id:this.selectedRessource.id
+      };
+    },
+
+    submittedDeleteRessForm:function () {
+      console.log('OK its work');
+      _.remove(this.ressources, { id: this.selectedRessource.id});
+      this.$forceUpdate();
+      this.confirmDeleteRessModalOpen=false;
+      this.selectedRessource=undefined;
+    },
+    
+    // clickCancelDelRess: function(){
+    //   $('#conRessSupp').modal('hide');
+    // }
   }
 });
