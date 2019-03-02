@@ -10,7 +10,6 @@ parasails.registerPage('available-superviseurs', {
 
     confirmDeleteSupModalOpen: false,
     confirmDeleteRessModalOpen: false,
-    addRessourceOpen: false,
     selectedSup: undefined,
     selectedRessource:undefined,
     selectedRess:[],
@@ -207,8 +206,8 @@ parasails.registerPage('available-superviseurs', {
 
     clickAddRess: function() {
       // Open the modal.
+      this.goto('/superviseurs/newRess');
       console.log('clicked Add Button');
-      this.addRessourceOpen=true;
     },
 
     submittedAddRessourceForm: function(result){
@@ -221,14 +220,14 @@ parasails.registerPage('available-superviseurs', {
 
       this.ressources.unshift(newRess);
 
-      this.addRessourceOpen=false;
       // Close the modal.
       this.closeAddRessourceModal();
     },
 
     closeAddRessourceModal: function () {
       console.log('clicked close button');
-      this.addRessourceOpen=false;
+      // Close modal
+      this.goto('/superviseurs');
       this.addRessource='';
     },
 
@@ -251,8 +250,8 @@ parasails.registerPage('available-superviseurs', {
     },
 
     closeDeleteRessModal: function () {
-      // Close modal
-      this.goto('/superviseurs');
+      // // Close modal
+      // this.goto('/superviseurs');
       this.selectedRessource=undefined;
       this.confirmDeleteRessModalOpen=false;
     },
@@ -265,12 +264,12 @@ parasails.registerPage('available-superviseurs', {
 
     submittedDeleteRessForm:function () {
       console.log('OK its work');
+      // this.goto('/superviseurs');
       _.remove(this.ressources, { id: this.selectedRessource.id});
       this.$forceUpdate();
       this.confirmDeleteRessModalOpen=false;
       this.selectedRessource=undefined;
     },
-    
     // clickCancelDelRess: function(){
     //   $('#conRessSupp').modal('hide');
     // }
