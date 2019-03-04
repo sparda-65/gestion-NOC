@@ -7,11 +7,14 @@ parasails.registerPage('available-superviseurs', {
     superviseurs:[],
     ressources:[],
     addRessource:'',
+    addAcce:'',
 
     confirmDeleteSupModalOpen: false,
     confirmDeleteRessModalOpen: false,
+    confirmDeleteAccModalOpen: false,
     selectedSup: undefined,
     selectedRessource:undefined,
+    selectedAcce:undefined,
     selectedRess:[],
     selectedAcc:[],
 
@@ -221,7 +224,7 @@ parasails.registerPage('available-superviseurs', {
       this.ressources.unshift(newRess);
 
       // Close the modal.
-      this.closeAddRessourceModal();
+      //this.closeAddRessourceModal();
     },
 
     closeAddRessourceModal: function () {
@@ -270,8 +273,68 @@ parasails.registerPage('available-superviseurs', {
       this.confirmDeleteRessModalOpen=false;
       this.selectedRessource=undefined;
     },
-    // clickCancelDelRess: function(){
-    //   $('#conRessSupp').modal('hide');
-    // }
+
+    // Methodes ajouter acce
+
+    clickAddAcc: function() {
+      // Open the modal.
+      this.goto('/superviseurs/newAcc');
+      console.log('clicked Add Button');
+    },
+
+    submittedAddAcceForm: function(result){
+
+      console.log('submittedAddRessourceForm');
+      var newAcc = _.extend(result,{
+        id:result.id,
+        acce:this.addAcce,
+      });
+
+      this.acces.unshift(newAcc);
+    },
+
+    closeAddAcceModal: function () {
+      console.log('clicked close button');
+      // Close modal
+      this.goto('/superviseurs');
+      this.addAcce='';
+    },
+
+    handleParsingAddAccForm: function() {
+      // Clear out any pre-existing error messages.
+      console.log(this.addAcce);
+      this.formErrors = {};
+      return{
+        acce:this.addAcce
+      };
+    },
+
+    // comfirmation de supressiom d'un Acce
+
+    clickDeleteAcc: function(accId){
+      console.log('clicked Delete accs button');
+      this.confirmDeleteAccModalOpen=true;
+      this.selectedAcce=_.find(this.acces,{id:accId});
+      console.log(this.selectedAcce);
+    },
+
+    closeDeleteAccModal: function () {
+      this.selectedAcce=undefined;
+      this.confirmDeleteAccModalOpen=false;
+    },
+
+    handleParsingDeleteAccForm: function () {
+      return{
+        id:this.selectedAcce.id
+      };
+    },
+
+    submittedDeleteAccForm:function () {
+      console.log('OK its work');
+      _.remove(this.acces, { id: this.selectedAcce.id});
+      this.$forceUpdate();
+      this.confirmDeleteAccModalOpen=false;
+      this.selectedAcce=undefined;
+    },
   }
 });

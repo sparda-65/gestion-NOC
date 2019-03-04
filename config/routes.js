@@ -57,6 +57,8 @@ module.exports.routes = {
   'GET /api/v1/superviseurs/:id/photo':                  { action: 'superviseurs/download-photo' },
   'POST /api/v1/superviseurs/add-one-ressource':         { action: 'superviseurs/add-one-ressource' },
   'DELETE /api/v1/superviseurs/destroy-one-ressource':   { action: 'superviseurs/destroy-one-ressource' },
+  'POST /api/v1/superviseurs/add-one-acce':              { action: 'superviseurs/add-one-acce' },
+  'DELETE /api/v1/superviseurs/destroy-one-acce':        { action: 'superviseurs/destroy-one-acce' },
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
