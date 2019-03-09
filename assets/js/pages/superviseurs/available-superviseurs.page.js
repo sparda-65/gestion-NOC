@@ -111,6 +111,8 @@ parasails.registerPage('available-superviseurs', {
         acces:[],
         previewImageSrc: ''
       };
+      this.selectedRess=[];
+      this.selectedAcc=[];
       // Clear error states
       this.formErrors = {};
       this.cloudError = '';
@@ -171,10 +173,10 @@ parasails.registerPage('available-superviseurs', {
         dateFin:this.uploadFormData.dateFin,
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
-        ressources: _.omit(this.selectedRess, ['createdAt','updatedAt']),
-        acces:_.omit(this.selectedAcc, ['createdAt','updatedAt'])
+        ressources: this.selectedRess,
+        acces:this.selectedAcc,
       });
-      console.log(JSON.stringify(newItem.ressources));
+      console.log(newItem);
       // Add the new thing to the list
       this.superviseurs.unshift(newItem);
 
