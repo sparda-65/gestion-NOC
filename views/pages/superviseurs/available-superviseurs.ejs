@@ -346,7 +346,7 @@
           <label>Ressources</label>
 
           <select class="form-control" multiple="multiple" v-model="selectedRess">
-            <option  v-for="item in ressources" :value="item.id" :key="item.ressource">{{item.ressource}}</option>
+            <option  v-for="item in ressources" :value="item" :key="item.ressource">{{item.ressource}}</option>
           </select>
           <span>{{selectedRess}}</span>
 
@@ -354,7 +354,7 @@
           <label>Acces</label>
 
           <select class="form-control" multiple="multiple" v-model="selectedAcc">
-            <option  v-for="item in acces" :value="item.id" :key="item.acce">{{item.acce}}</option>
+            <option  v-for="item in acces" :value="item" :key="item.acce">{{item.acce}}</option>
           </select>
           <span>{{selectedAcc}}</span>
 

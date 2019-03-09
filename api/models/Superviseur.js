@@ -59,11 +59,11 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
     ressources: {
       collection: 'Ressources',
-      via: 'owners'
+      //via: 'owners'
     },
     acces: {
       collection: 'Acces',
-      via: 'owners'
+      //via: 'owners'
     }
 
   },

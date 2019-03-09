@@ -128,8 +128,18 @@ parasails.registerPage('available-superviseurs', {
     handleParsingUploadSupForm: function() {
       // Clear out any pre-existing error messages.
       this.formErrors = {};
-      this.uploadFormData.ressources= JSON.stringify(this.selectedRess);
-      this.uploadFormData.acces= JSON.stringify(this.selectedAcc);
+      var ress=[];
+      var acc=[];
+      this.selectedRess.forEach(element => {
+        ress.push(element.id);
+      });
+
+      this.selectedAcc.forEach(element => {
+        acc.push(element.id);
+      });
+
+      this.uploadFormData.ressources= JSON.stringify(ress);
+      this.uploadFormData.acces= JSON.stringify(acc);
       console.log(this.selectedRess);
       console.log(this.selectedAcc);
       var argins = this.uploadFormData;
@@ -150,6 +160,7 @@ parasails.registerPage('available-superviseurs', {
     submittedUploadSupForm: function(result){
 
       console.log('submittedUploadSupForm'+this.uploadFormData.ressources);
+      console.log('selectedRess :  '+this.selectedRess);
 
       var newItem = _.extend(result,{
         id:result.id,
@@ -160,15 +171,10 @@ parasails.registerPage('available-superviseurs', {
         dateFin:this.uploadFormData.dateFin,
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
-        ressources: {
-          ressource:this.uploadFormData.ressources
-        },
-        acces:{
-          acce:this.uploadFormData.acces
-        }
+        ressources: _.omit(this.selectedRess, ['createdAt','updatedAt']),
+        acces:_.omit(this.selectedAcc, ['createdAt','updatedAt'])
       });
-
-
+      console.log(JSON.stringify(newItem.ressources));
       // Add the new thing to the list
       this.superviseurs.unshift(newItem);
 
