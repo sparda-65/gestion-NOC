@@ -7,15 +7,17 @@
       <h1>Les Equipes NOC Supervision</h1>
       <h5>vue globale sur les equipes NOC supervision qui veille sur notre réseau jour et nuit. </h5>
       <div class="header-button">
-        <button class="btn btn-outline-primary" @click="clickAddButton()">Ajouter Superviseur</button>
+        <button class="btn btn-outline-primary" @click="clickAddButton()">Ajouter Superviseur</button><br>
         <button class="btn btn-outline-primary" @click="clickAddRess()">Ajouter Ressources</button>
         <button class="btn btn-outline-primary" @click="clickAddAcc()">Ajouter Acces</button>
+        <button class="btn btn-outline-primary" @click="clickAddPrestataire()">Ajouter Prestataire</button>
+        <button class="btn btn-outline-primary" @click="clickAddEquipe()">Ajouter Equipe</button>
       </div>
     </div>
   </div>
 
   <div class="container">
-  <table id="example" class="table table-striped table-bordered">
+  <table id="example" style="width:100%" class="table table-striped table-bordered">
     <thead>
     <tr>
       <th>Nom</th>
@@ -295,6 +297,194 @@
   </ajax-form>
 </modal>
 
+<!--model pour ajouter Prestataire-->
+<modal v-if="virtualPageSlug === 'newPrestataire'" v-cloak key="newRess" @close="closeAddPrestataireModal()">
+
+  <div class="modal-header">
+      <h5 class="modal-title">Ajouter Prestataire</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span>&times;</span>
+      </button>
+  </div>
+
+<ajax-form action="addOnePrestataire" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingAddPrestataireForm" @submitted="submittedAddPrestataireForm($event)">
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Prestataire</label>
+        <input class="form-control" type="text" v-model="addAcce" placeholder="Waffle Iron">
+      </div>
+      <slot name="footer">
+        <button type="submit" class="btn btn-outline-primary">
+          Ajouter
+        </button>
+        <button class="btn btn-outline-primary" data-dismiss="modal">
+          Cancel
+        </button>
+      </slot>  
+    </div> 
+
+    <table id="Acc" class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Prestataire</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in prestataires">
+          <td>{{item.prestataire}}</td>
+          <td class="align-items-center" style="text-align: center;letter-spacing:5px">
+            <span class="options-button" data-toggle="tooltip" data-placement="top" @click="clickDeletePrestataire(item.id)" title="Delete">
+              <span class="fa fa-trash-o text-danger"></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+        <div class="modal-footer">
+          
+        </div>
+</ajax-form>
+
+
+</modal>
+
+<!-- confirmatiom de supression du Prestataire-->
+
+<modal  v-if="confirmDeletePrestataireModalOpen|| selectedPrestataire" v-cloak key="add" @close="closeDeletePrestataireModal()">
+
+<ajax-form action="destroyOnePrestataire" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingDeletePrestataireForm" @submitted="submittedDeletePrestataireForm()">
+  <div class="modal-mask">
+    <div class="modal-wrapper">
+      <div class="modal-container">
+
+        <div class="modal-header">
+
+          <slot name="header">
+            Supprimer Prestataire
+          </slot>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <slot name="body">
+            voulez-vous vraiment supprimer l'acce <strong>{{selectedPrestataire.prestataire || 'item'}}</strong>?
+          </slot>
+        </div>
+
+        <div class="modal-footer">
+          <slot name="footer">
+            <button type="submit" class="btn btn-outline-primary">
+              Remove
+            </button>
+            <button class="btn btn-outline-primary" data-dismiss="modal" class="close">
+              Cancel
+            </button>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</ajax-form>
+</modal>
+
+<!--model pour ajouter une Equipe-->
+<modal v-if="virtualPageSlug === 'newEquipe'" v-cloak key="newEquip" @close="closeAddEquipeModal()">
+
+  <div class="modal-header">
+      <h5 class="modal-title">Ajouter Equipe</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span>&times;</span>
+      </button>
+  </div>
+
+<ajax-form action="addOneEquipe" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingAddEquipeForm" @submitted="submittedAddEquipeForm($event)">
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Acce</label>
+        <input class="form-control" type="text" v-model="addAcce" placeholder="Waffle Iron">
+      </div>
+      <slot name="footer">
+        <button type="submit" class="btn btn-outline-primary">
+          Ajouter
+        </button>
+        <button class="btn btn-outline-primary" data-dismiss="modal">
+          Cancel
+        </button>
+      </slot>  
+    </div> 
+
+    <table id="Acc" class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Equipe</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in equipes">
+          <td>{{item.equipe}}</td>
+          <td class="align-items-center" style="text-align: center;letter-spacing:5px">
+            <span class="options-button" data-toggle="tooltip" data-placement="top" @click="clickDeleteEquipe(item.id)" title="Delete">
+              <span class="fa fa-trash-o text-danger"></span>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+        <div class="modal-footer">
+          
+        </div>
+</ajax-form>
+
+
+</modal>
+
+<!-- confirmatiom de supression d'une Equipe-->
+
+<modal  v-if="confirmDeleteEquipeModalOpen|| selectedEquipe" v-cloak key="add" @close="closeDeleteEquipeModal()">
+
+<ajax-form action="destroyOneEquipe" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingDeleteEquipeForm" @submitted="submittedDeleteEquipeForm()">
+  <div class="modal-mask">
+    <div class="modal-wrapper">
+      <div class="modal-container">
+
+        <div class="modal-header">
+
+          <slot name="header">
+            Supprimer Equipe
+          </slot>
+          <button type="button" class="close" data-dismiss="modal" aria-label="close">
+            <span>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <slot name="body">
+            voulez-vous vraiment supprimer l'acce <strong>{{selectedEquipe.equipe || 'item'}}</strong>?
+          </slot>
+        </div>
+
+        <div class="modal-footer">
+          <slot name="footer">
+            <button type="submit" class="btn btn-outline-primary">
+              Remove
+            </button>
+            <button class="btn btn-outline-primary" data-dismiss="modal" class="close">
+              Cancel
+            </button>
+          </slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</ajax-form>
+</modal>
+
   <!--"Ajouter superviseur" modal-->
 
   <modal v-if="virtualPageSlug === 'new'" v-cloak key="new" @close="closeUploadSupModal()">
@@ -333,8 +523,17 @@
           <input class="form-control" type="text" v-model="uploadFormData.nom" placeholder="Waffle Iron">
           <label>Prenom</label>
           <input class="form-control" type="text" v-model="uploadFormData.prenom" placeholder="Waffle Iron">
+          
           <label>Equipe</label>
-          <input class="form-control" type="text" v-model="uploadFormData.equipe" placeholder="Waffle Iron">
+          <select class="form-control" type="text" v-model="uploadFormData.equipe" >
+            <option  v-for="item in equipes" :value="item.id" :key="item.equipe">{{item.equipe}}</option>
+          </select> 
+
+          <label>Prestataire</label>
+          <select class="form-control" type="text" v-model="uploadFormData.prestataire" >
+            <option  v-for="item in prestataires" :value="item.id" :key="item.prestataire">{{item.prestataire}}</option>
+          </select> 
+
           <label>Date debut</label>
           <input class="form-control" type="date" v-model="uploadFormData.dateEntry" placeholder="Waffle Iron">
           <label>Date fin</label>

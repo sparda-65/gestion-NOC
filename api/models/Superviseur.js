@@ -35,7 +35,7 @@ module.exports = {
       required:true
     },
 
-    equipe:{type:'string'},
+    //equipe:{type:'string'},
 
     dateFin:{type:'string', columnType:'date'},
 
@@ -64,8 +64,13 @@ module.exports = {
     acces: {
       collection: 'Acces',
       //via: 'owners'
-    }
-
+    },
+    equipe:{
+      collection:'Equipes',
+    },
+    prestataire:{
+      collection:'Prestataires',
+    },
   },
 
 };

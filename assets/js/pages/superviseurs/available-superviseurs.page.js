@@ -8,13 +8,19 @@ parasails.registerPage('available-superviseurs', {
     ressources:[],
     addRessource:'',
     addAcce:'',
+    addEquipe:'',
+    addPrestataire:'',
 
     confirmDeleteSupModalOpen: false,
     confirmDeleteRessModalOpen: false,
     confirmDeleteAccModalOpen: false,
+    confirmDeleteEquipeModalOpen: false,
+    confirmDeletePrestataireModalOpen: false,
     selectedSup: undefined,
     selectedRessource:undefined,
     selectedAcce:undefined,
+    selectedEquipe:undefined,
+    selectedPrestataire:undefined,
     selectedRess:[],
     selectedAcc:[],
 
@@ -33,7 +39,8 @@ parasails.registerPage('available-superviseurs', {
       chart: undefined,
       ressources:[],
       acces:[],
-      previewImageSrc: ''
+      previewImageSrc: '',
+      prestataire:''
     },
 
     //syncing / loading status
@@ -57,7 +64,15 @@ parasails.registerPage('available-superviseurs', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+      'language': {
+        'lengthMenu': 'Afficher _MENU_ Superviseurs par page',
+        'zeroRecords': 'Aucun Superviseur',
+        'info': 'page _PAGE_ / _PAGES_',
+        'infoEmpty': 'Aucun Superviseur',
+        'infoFiltered': '(filtrer à partir de _MAX_ Superviseurs)'
+      }
+    });
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
@@ -109,7 +124,8 @@ parasails.registerPage('available-superviseurs', {
         chart: undefined,
         ressources:[],
         acces:[],
-        previewImageSrc: ''
+        previewImageSrc: '',
+        prestataire:''
       };
       this.selectedRess=[];
       this.selectedAcc=[];
@@ -175,6 +191,7 @@ parasails.registerPage('available-superviseurs', {
         chart: this.uploadFormData.chart,
         ressources: this.selectedRess,
         acces:this.selectedAcc,
+        prestataire:this.uploadFormData.prestataire,
       });
       console.log(newItem);
       // Add the new thing to the list
@@ -343,6 +360,132 @@ parasails.registerPage('available-superviseurs', {
       this.$forceUpdate();
       this.confirmDeleteAccModalOpen=false;
       this.selectedAcce=undefined;
+    },
+
+    // Methodes ajouter Equipe
+
+    clickAddEquipe: function() {
+      // Open the modal.
+      this.goto('/superviseurs/newEquipe');
+      console.log('clicked Add Button');
+    },
+
+    submittedAddEquipeForm: function(result){
+
+      console.log('submittedAddEquipeForm');
+      var newEquipe = _.extend(result,{
+        id:result.id,
+        equipe:this.addEquipe,
+      });
+
+      this.equipes.unshift(newEquipe);
+    },
+
+    closeAddEquipeModal: function () {
+      console.log('clicked close button');
+      // Close modal
+      this.goto('/superviseurs');
+      this.addEquipe='';
+    },
+
+    handleParsingAddEquipeForm: function() {
+      // Clear out any pre-existing error messages.
+      console.log(this.addEquipe);
+      this.formErrors = {};
+      return{
+        equipe:this.addEquipe
+      };
+    },
+
+    // comfirmation de supressiom d'un Acce
+
+    clickDeleteEquipe: function(EquipeId){
+      console.log('clicked Delete accs button');
+      this.confirmDeleteEquipeModalOpen=true;
+      this.selectedEquipe=_.find(this.equipes,{id:EquipeId});
+      console.log(this.selectedEquipe);
+    },
+
+    closeDeleteEquipeModal: function () {
+      this.selectedEquipe=undefined;
+      this.confirmDeleteEquipeModalOpen=false;
+    },
+
+    handleParsingDeleteEquipeForm: function () {
+      return{
+        id:this.selectedEquipe.id
+      };
+    },
+
+    submittedDeleteEquipeForm:function () {
+      console.log('OK its work');
+      _.remove(this.equipes, { id: this.selectedEquipe.id});
+      this.$forceUpdate();
+      this.confirmDeleteEquipeModalOpen=false;
+      this.selectedEquipe=undefined;
+    },
+
+    // Methodes ajouter Prestataire
+
+    clickAddPrestataire: function() {
+      // Open the modal.
+      this.goto('/superviseurs/newPrestataire');
+      console.log('clicked Add Button');
+    },
+
+    submittedAddPrestataireForm: function(result){
+
+      console.log('submittedAddEquipeForm');
+      var newPrestataire = _.extend(result,{
+        id:result.id,
+        prestataire:this.addPrestataire,
+      });
+
+      this.prestataires.unshift(newPrestataire);
+    },
+
+    closeAddPrestataireModal: function () {
+      console.log('clicked close button');
+      // Close modal
+      this.goto('/superviseurs');
+      this.addPrestataire='';
+    },
+
+    handleParsingAddPrestataireForm: function() {
+      // Clear out any pre-existing error messages.
+      console.log(this.addPrestataire);
+      this.formErrors = {};
+      return{
+        prestataire:this.addPrestataire
+      };
+    },
+
+    // comfirmation de supressiom Prestataire
+
+    clickDeletePrestataire: function(prestataireId){
+      console.log('clicked Delete accs button');
+      this.confirmDeletePrestataireModalOpen=true;
+      this.selectedPrestataire=_.find(this.equipes,{id:prestataireId});
+      console.log(this.selectedPrestataire);
+    },
+
+    closeDeletePrestataireModal: function () {
+      this.selectedPrestataire=undefined;
+      this.confirmDeletePrestataireModalOpen=false;
+    },
+
+    handleParsingDeletePrestataireForm: function () {
+      return{
+        id:this.selectedPrestataire.id
+      };
+    },
+
+    submittedDeletePrestataireForm:function () {
+      console.log('OK its work');
+      _.remove(this.prestataires, { id: this.selectedPrestataire.id});
+      this.$forceUpdate();
+      this.confirmDeletePrestataireModalOpen=false;
+      this.selectedPrestataire=undefined;
     },
   }
 });

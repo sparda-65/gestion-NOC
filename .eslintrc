@@ -46,7 +46,9 @@
     "User": true,
     "Superviseur": true,
     "Acces": true,
-    "Ressources": true
+    "Ressources": true,
+    "Equipes": true,
+    "Prestataires": true
     
     // …and any others.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
