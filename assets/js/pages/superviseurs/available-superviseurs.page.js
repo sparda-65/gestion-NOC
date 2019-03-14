@@ -375,7 +375,7 @@ parasails.registerPage('available-superviseurs', {
       console.log('submittedAddEquipeForm');
       var newEquipe = _.extend(result,{
         id:result.id,
-        equipe:this.addEquipe,
+        equipe:this.uploadFormData.equipe,
       });
 
       this.equipes.unshift(newEquipe);
@@ -385,15 +385,15 @@ parasails.registerPage('available-superviseurs', {
       console.log('clicked close button');
       // Close modal
       this.goto('/superviseurs');
-      this.addEquipe='';
+      this.uploadFormData.equipe='';
     },
 
     handleParsingAddEquipeForm: function() {
       // Clear out any pre-existing error messages.
-      console.log(this.addEquipe);
+      console.log(this.uploadFormData.equipe);
       this.formErrors = {};
       return{
-        equipe:this.addEquipe
+        equipe:this.uploadFormData.equipe
       };
     },
 
@@ -438,7 +438,7 @@ parasails.registerPage('available-superviseurs', {
       console.log('submittedAddEquipeForm');
       var newPrestataire = _.extend(result,{
         id:result.id,
-        prestataire:this.addPrestataire,
+        prestataire:this.uploadFormData.prestataire,
       });
 
       this.prestataires.unshift(newPrestataire);
@@ -448,24 +448,24 @@ parasails.registerPage('available-superviseurs', {
       console.log('clicked close button');
       // Close modal
       this.goto('/superviseurs');
-      this.addPrestataire='';
+      this.uploadFormData.prestataire='';
     },
 
     handleParsingAddPrestataireForm: function() {
       // Clear out any pre-existing error messages.
-      console.log(this.addPrestataire);
+      console.log(this.uploadFormData.prestataire);
       this.formErrors = {};
       return{
-        prestataire:this.addPrestataire
+        prestataire:this.uploadFormData.prestataire
       };
     },
 
     // comfirmation de supressiom Prestataire
 
     clickDeletePrestataire: function(prestataireId){
-      console.log('clicked Delete accs button');
+      console.log('clicked Delete accs button'+prestataireId);
       this.confirmDeletePrestataireModalOpen=true;
-      this.selectedPrestataire=_.find(this.equipes,{id:prestataireId});
+      this.selectedPrestataire=_.find(this.prestataires,{id:prestataireId});
       console.log(this.selectedPrestataire);
     },
 

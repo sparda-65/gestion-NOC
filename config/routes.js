@@ -59,6 +59,10 @@ module.exports.routes = {
   'DELETE /api/v1/superviseurs/destroy-one-ressource':   { action: 'superviseurs/destroy-one-ressource' },
   'POST /api/v1/superviseurs/add-one-acce':              { action: 'superviseurs/add-one-acce' },
   'DELETE /api/v1/superviseurs/destroy-one-acce':        { action: 'superviseurs/destroy-one-acce' },
+  'POST /api/v1/superviseurs/add-one-equipe':            { action: 'superviseurs/add-one-equipe' },
+  'POST /api/v1/superviseurs/add-one-prestataire':       { action: 'superviseurs/add-one-prestataire' },
+  'DELETE /api/v1/superviseurs/destroy-one-prestataire': { action: 'superviseurs/destroy-one-prestataire' },
+  'DELETE /api/v1/superviseurs/destroy-one-equipe':      { action: 'superviseurs/destroy-one-equipe' },
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

@@ -311,7 +311,7 @@
     <div class="modal-body">
       <div class="form-group">
         <label>Prestataire</label>
-        <input class="form-control" type="text" v-model="addAcce" placeholder="Waffle Iron">
+        <input class="form-control" type="text" v-model="uploadFormData.prestataire" placeholder="Waffle Iron">
       </div>
       <slot name="footer">
         <button type="submit" class="btn btn-outline-primary">
@@ -352,7 +352,7 @@
 
 <!-- confirmatiom de supression du Prestataire-->
 
-<modal  v-if="confirmDeletePrestataireModalOpen|| selectedPrestataire" v-cloak key="add" @close="closeDeletePrestataireModal()">
+<modal  v-if="confirmDeletePrestataireModalOpen || selectedPrestataire" v-cloak key="add" @close="closeDeletePrestataireModal()">
 
 <ajax-form action="destroyOnePrestataire" :syncing.sync="syncing" cloud-error.sync="cloudError" :handle-parsing="handleParsingDeletePrestataireForm" @submitted="submittedDeletePrestataireForm()">
   <div class="modal-mask">
@@ -405,7 +405,7 @@
     <div class="modal-body">
       <div class="form-group">
         <label>Acce</label>
-        <input class="form-control" type="text" v-model="addAcce" placeholder="Waffle Iron">
+        <input class="form-control" type="text" v-model="uploadFormData.equipe" placeholder="Waffle Iron">
       </div>
       <slot name="footer">
         <button type="submit" class="btn btn-outline-primary">
