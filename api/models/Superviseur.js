@@ -66,10 +66,10 @@ module.exports = {
       //via: 'owners'
     },
     equipe:{
-      collection:'Equipes',
+      model:'Equipes',
     },
     prestataire:{
-      collection:'Prestataires',
+      model:'Prestataires',
     },
   },
 

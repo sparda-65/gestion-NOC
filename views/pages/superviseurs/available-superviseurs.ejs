@@ -23,6 +23,7 @@
       <th>Nom</th>
       <th>Prenom</th>
       <th>Equipe</th>
+      <th>Prestataire</th>
       <th>Actif</th>
       <th>signature Chart</th>
       <th>Date Debut</th>
@@ -35,7 +36,8 @@
     <tr v-for="superviseur in superviseurs">
       <td>{{superviseur.nom}}</td>
       <td>{{superviseur.prenom}}</td>
-      <td>{{superviseur.equipe}}</td>
+      <td>{{superviseur.equipe.equipe}}</td>
+      <td>{{superviseur.prestataire.prestataire}}</td>
       <td>{{superviseur.actif}}</td>
       <td>{{superviseur.chart}}</td>
       <td>{{superviseur.dateEntry}}</td>
@@ -59,6 +61,7 @@
       <th>Nom</th>
       <th>Prenom</th>
       <th>Equipe</th>
+      <th>Prestataire</th>
       <th>Actif</th>
       <th>signature Chart</th>
       <th>Date Debut</th>
@@ -525,13 +528,13 @@
           <input class="form-control" type="text" v-model="uploadFormData.prenom" placeholder="Waffle Iron">
           
           <label>Equipe</label>
-          <select class="form-control" type="text" v-model="uploadFormData.equipe" >
-            <option  v-for="item in equipes" :value="item.id" :key="item.equipe">{{item.equipe}}</option>
+          <select class="form-control" type="text" v-model="selectedEqu" >
+            <option  v-for="item in equipes" :value="item" :key="item.equipe">{{item.equipe}}</option>
           </select> 
 
           <label>Prestataire</label>
-          <select class="form-control" type="text" v-model="uploadFormData.prestataire" >
-            <option  v-for="item in prestataires" :value="item.id" :key="item.prestataire">{{item.prestataire}}</option>
+          <select class="form-control" type="text" v-model="selectedPrest" >
+            <option  v-for="item in prestataires" :value="item" :key="item.prestataire">{{item.prestataire}}</option>
           </select> 
 
           <label>Date debut</label>

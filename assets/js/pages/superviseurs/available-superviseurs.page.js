@@ -23,6 +23,8 @@ parasails.registerPage('available-superviseurs', {
     selectedPrestataire:undefined,
     selectedRess:[],
     selectedAcc:[],
+    selectedEqu:{},
+    selectedPrest:{},
 
     // The "virtual" portion of the URL which is managed by this page script.
     virtualPageSlug: '',
@@ -158,6 +160,9 @@ parasails.registerPage('available-superviseurs', {
 
       this.uploadFormData.ressources= JSON.stringify(ress);
       this.uploadFormData.acces= JSON.stringify(acc);
+      this.uploadFormData.equipe=this.selectedEqu.id;
+      this.uploadFormData.prestataire=this.selectedPrest.id;
+
       console.log(this.selectedRess);
       console.log(this.selectedAcc);
       var argins = this.uploadFormData;
@@ -179,19 +184,27 @@ parasails.registerPage('available-superviseurs', {
 
       console.log('submittedUploadSupForm'+this.uploadFormData.ressources);
       console.log('selectedRess :  '+this.selectedRess);
+      console.log('equipe :  '+JSON.stringify(this.uploadFormData.equipe));
+      console.log('prestataire :  '+JSON.stringify(this.uploadFormData.prestataire));
 
       var newItem = _.extend(result,{
         id:result.id,
         nom:this.uploadFormData.nom,
         prenom:this.uploadFormData.prenom,
         dateEntry:this.uploadFormData.dateEntry,
-        equipe:this.uploadFormData.equipe,
+        equipe:{
+          equipe:this.selectedEqu.equipe,
+          id:this.selectedEqu.id
+        },
         dateFin:this.uploadFormData.dateFin,
         actif: this.uploadFormData.actif,
         chart: this.uploadFormData.chart,
         ressources: this.selectedRess,
         acces:this.selectedAcc,
-        prestataire:this.uploadFormData.prestataire,
+        prestataire:{
+          prestataire:this.selectedPrest.prestataire,
+          id:this.selectedPrest.id
+        },
       });
       console.log(newItem);
       // Add the new thing to the list
