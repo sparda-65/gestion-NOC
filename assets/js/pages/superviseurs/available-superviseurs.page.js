@@ -16,6 +16,7 @@ parasails.registerPage('available-superviseurs', {
     confirmDeleteAccModalOpen: false,
     confirmDeleteEquipeModalOpen: false,
     confirmDeletePrestataireModalOpen: false,
+    confirmViewSupModalOpen: false,
     selectedSup: undefined,
     selectedRessource:undefined,
     selectedAcce:undefined,
@@ -500,5 +501,26 @@ parasails.registerPage('available-superviseurs', {
       this.confirmDeletePrestataireModalOpen=false;
       this.selectedPrestataire=undefined;
     },
+
+    // Methodes afficher informations superviseur
+
+    clickViewSup: function(superviseurId){
+      console.log('clicked View Superviseur button');
+      this.confirmViewSupModalOpen=true;
+      this.selectedSup=_.find(this.superviseurs,{id:superviseurId});
+      console.log(this.selectedSup);
+    },
+
+    closeViewSupModal: function () {
+      this.selectedSup=undefined;
+      this.confirmViewSupModalOpen=false;
+    },
+
+    handleParsingViewSupForm: function () {
+      return{
+        id:this.selectedSup.id
+      };
+    },
+
   }
 });
